@@ -1,0 +1,374 @@
+a:link{
+	text-decoration: none;
+	color: #5D5D5D;
+}
+a:visited{
+	text-decoration: none;
+	color: #5D5D5D;
+}
+
+
+.approach-item-text {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    color:#fff;
+    font-size: 200%;
+    text-transform: uppercase;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 0%;
+    opacity: 1.0;
+}
+
+.about-text:hover > .uk-overlay > p{
+    opacity: 0.0;
+}
+
+/* .......... Font ..........*/
+
+@font-face {
+    font-family: 'font-m';
+    src: 
+         url('../fonts/Kozuka-Gothic-Pro.ttf') format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'font-el';
+    src: 
+         url('../fonts/KozGoPr6N-ExtraLight.otf') format("opentype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.font-m {
+    font-family: 'font-m';
+}
+
+.font-el {
+    font-family: 'font-el';
+}
+
+/* ............................ M I N I  M E N U ............................ */
+
+#mmenu{
+	position: fixed;
+	top: 0px;
+	left: -240px;
+	z-index: 910;
+	
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out; /* Firefox 4 */
+	-webkit-transition: all 0.3s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.3s ease-in-out; /* Opera */
+}
+#mmenu .logo{
+	background-color: white;
+	height: 120px;
+	width: 120px;
+	z-index: 920;
+	position: absolute;
+}
+#mmenu a{
+	border: none;
+}
+#mmenu nav a{
+	width: 120px;
+	height: 120px;
+	font-size: 14px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 910;
+	line-height: 32px;
+}
+#mmenu nav a:hover{
+	border none;
+}
+#mmenu nav a span{
+	margin-top: 30px;
+}
+#mmenu nav a:hover span{
+	margin-top: 25px;
+}
+#mmenu .main-nav{
+	position: relative;
+}
+#mmenu:hover .navWork{
+	left:120px;
+}
+#mmenu:hover .navAbout{
+	left:120px;
+	top:120px;
+}
+#mmenu:hover .navHire{
+	top:120px;
+}
+
+/* ............................ H E A D E R ............................ */
+
+header{
+	-webkit-box-shadow:  0px 0px 17px 0px rgba(0, 0, 0, 0.0);
+    box-shadow:  0px 0px 17px 0px rgba(0, 0, 0, 0.0);
+}
+.head{
+	margin: auto;
+	width: 960px;
+	height: 160px;
+}
+.logo{
+	background-image: url(../image/changchang_logo.png);
+	background-repeat: no-repeat;
+	background-color: white;
+    background-size: contain;
+    width: 60px;
+    height: 80px;
+    background-position: center center;
+}
+.logo:hover{
+}
+.whitebox{
+	background-color: white;
+	height: 160px;
+	width: 50%;
+	position: absolute;
+	z-index: -40;
+}
+.main-nav{
+	float: left;
+	font-family: futura;
+}
+
+.main-nav a{
+	display: block;
+	float: left;
+	height: 155px;
+	width: 160px;
+	padding: 0px 0px 0px 0px;
+	font-size: 16px;
+	color: #5d5d5d;
+	text-align: center;
+	border-bottom: 0px solid #5d5d5d;
+	color: rgba(0, 0, 0, 0.0);
+	line-height: 40px;
+	
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
+	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.2s ease-in-out; /* Opera */
+}
+.main-nav a:hover{
+	background-color: #ed2d8e;
+	height: 135px;
+	border-bottom: 20px solid #5d5d5d;
+	color: #5d5d5d;
+	border-top: 5px solid #ed2d8e;
+}
+.main-nav a span{
+	background-image: url(../image/WEB_NAVI_SQUARE.png);
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 60px;
+	display: block;
+	margin: auto;
+	margin-top: 45px;
+	
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
+	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
+	-o-transition: all 0.2s ease-in-out; /* Opera */
+}
+.main-nav a:hover span{
+	
+	margin-top: 25px;
+}
+.navWork{
+	background-color: #777;
+	border-top: 5px solid #666;
+}
+.navWork span{background-position: 50% 100%;}
+.navWork:hover span{background-position: 50% 0%;}
+.navAbout{
+	background-color: #999;
+	border-top: 5px solid #888;	
+}
+.navAbout span{background-position: 0% 100%;}
+.navAbout:hover span{background-position: 0% 0%;}
+.navHire{
+	background-color: #bbb;
+	border-top: 5px solid #aaa;	
+}
+.navHire span{background-position: 100% 100%;}
+.navHire:hover span{background-position: 100% 0%;}
+
+.shLink{
+  float: left;
+  padding: 40px 0 0 31px;
+  height: 120px;
+  width: 129px;
+}
+.shLink:hover .shTitle:after
+{
+	content: " →";
+	font:normal 14px/14px Arial;
+}
+.shNew{
+  float: left;
+  font-size:12px;
+  font-family: 'futura_ltbold', helvetica, arial, sans-serif;
+  color: #00c09e;
+  padding: 0 0 0 10px;
+}
+.shTitle{
+  float: left;
+  clear: both;
+  font-size:24px;
+  font-family: 'futura_ltbold', helvetica, arial, sans-serif;
+  color: #444;
+  padding: 0 0 0 10px;
+}
+.shLink img{
+  float: left;
+  clear: both;
+  width: 100px;
+}
+
+/*00c09e*/
+
+
+/*....................GO DOWN ARROW................................*/
+.go-down-arrow {
+    background: url(../image/down_grey@2x.png) no-repeat;
+    width: 50px;
+    height: 25px;
+    background-size: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    margin-left: -22px;
+    z-index: 4;
+    opacity: 0.9;
+    -webkit-animation-name: bounceball;
+    -webkit-animation-duration: .8s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-delay: 1;
+    -webkit-animation-timing-function: ease-out;
+    animation-name: bounceball;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 0;
+    timing-function: ease-out;
+    animation-play-state: running;
+    animation-fill-mode: none;
+}
+.go-down-arrow.grey {
+    background: url(../image/down_grey@2x.png) no-repeat;
+    background-size: 100%;
+}
+.go-down-arrow:hover {
+    opacity: 1;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+@keyframes bounceball {
+    from {
+        bottom: 10px;
+    }
+    to {
+        bottom: 15px;
+    }
+}
+@-webkit-keyframes bounceball {
+    from {
+        bottom: 10px;
+    }
+    to {
+        bottom: 15px;
+    }
+}
+
+
+
+/* ........... GForm ..........*/
+.gform{
+	clear: both;
+}
+.gform input{
+	font-family: 'futura_ltregular', helvetica, arial, sans-serif;
+	height: 60px;
+	width: 204px;
+	font-size: 20px;
+	color: #ed2d8e;
+	background: none;
+	border: none;
+}
+.gform input:focus{
+	outline: none;
+}
+.gform textarea{
+	font-family: 'futura_ltregular', helvetica, arial, sans-serif;
+	height: 120px;
+	width:327px;
+	font-size: 20px;
+	color: #ed2d8e;
+	border: none;
+	background: none;
+	padding-top: 17px;
+	letter-spacing: 1px;
+}
+.gform textarea:focus{
+	outline: none;
+}
+.ss-q-title{
+	float: left;
+	padding: 22px 20px 0px 20px;
+	font-size: 16px;
+	letter-spacing: 1px;
+}
+.ss-form-entry {
+	background-color: rgba(0,0,0, 0.2);
+	margin-bottom: 10px;
+	margin-top: 9px;
+}
+.ss-form-entry{
+	float: left;
+	margin-right: 20px;
+}
+.ss-q-item-label{
+	float: left;
+}
+#ss-submit{
+	background-color: rgba(0,0,0, 0.2);
+	color: #ed2d8e;
+	width: 90px;
+	height: 40px;
+	letter-spacing: 1px;
+	cursor: pointer;
+	background-image: url(/imgs/projectbg.png);
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	transition: all 0.1s ease-in-out;
+}
+#ss-submit:hover{
+	background-color: rgba(0,0,0, 0.2);
+	color: #ed2d8e;
+	width: 110px !important;
+	letter-spacing: 1px;
+}
+#ss-submit.sending{
+	background-image: url("../image/sending.GIF");
+	background-repeat: no-repeat;
+	background-position: center center;
+	color: transparent;
+}
+.ss-paragraph-text .ss-form-entry{
+	margin-right: 90px;
+}
