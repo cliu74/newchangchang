@@ -332,9 +332,10 @@ header{
 	letter-spacing: 1px;
 }
 .ss-form-entry {
-	background-color: rgba(0,0,0, 0.2);
+	background-color: rgba(0,0,0, 0.05);
 	margin-bottom: 10px;
 	margin-top: 9px;
+    font-family: 'font-el';
 }
 .ss-form-entry{
 	float: left;
@@ -344,12 +345,14 @@ header{
 	float: left;
 }
 #ss-submit{
-	background-color: rgba(0,0,0, 0.2);
+	background-color: rgba(0,0,0, 0.05);
 	color: #ed2d8e;
 	width: 90px;
 	height: 40px;
 	letter-spacing: 1px;
 	cursor: pointer;
+    font-family: 'font-el';
+    text-transform: uppercase;
 	background-image: url(/imgs/projectbg.png);
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition: all 0.1s ease-in-out;
@@ -358,7 +361,7 @@ header{
 	transition: all 0.1s ease-in-out;
 }
 #ss-submit:hover{
-	background-color: rgba(0,0,0, 0.2);
+	background-color: rgba(0,0,0, 0.05);
 	color: #ed2d8e;
 	width: 110px !important;
 	letter-spacing: 1px;
