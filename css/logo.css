@@ -367,10 +367,10 @@ header{
 	letter-spacing: 1px;
 }
 #ss-submit.sending{
-	background-image: url("../image/sending.GIF");
+	/*background-image: url("../image/sending.GIF");*/
 	background-repeat: no-repeat;
 	background-position: center center;
-	color: transparent;
+	/*color: transparent;*/
 }
 .ss-paragraph-text .ss-form-entry{
 	margin-right: 90px;
