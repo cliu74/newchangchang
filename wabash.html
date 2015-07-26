@@ -42,11 +42,21 @@
                 border-top-color: inherit;
                 box-shadow: inherit
             }
+            #warning-message { display: none; }
+            @media only screen and (orientation:portrait){
+                #wrapper { display:none; }
+                #warning-message { display:block; }
+            }
+            @media only screen and (orientation:landscape){
+                #warning-message { display:none; }
+            }
         </style>
     </head>
 
     <body>
 
+        <div id="wrapper">
+            
         <div id ="header"></div>
         <!-- .......... Mini Menu ......... -->
         <div id="mmenu" style="left: 20px;">
@@ -228,7 +238,9 @@ All graphic drawings are based on sound study and research. The skill of visuali
             </form>
             
         </div>
+        </div>
         
-        
+        <div class="uk-cover-background uk-height-viewport" style="background-image: url(image/2_classic_collar.jpg);" id="warning-message">
+        </div>
     </body>
 </html>
