@@ -375,14 +375,3 @@ header{
 .ss-paragraph-text .ss-form-entry{
 	margin-right: 90px;
 }
-
-
-/** ......... Responsiveness .......... **/
-#warning-message { display: none; }
-@media only screen and (orientation:portrait){
-    #wrapper { display:none; }
-    #warning-message { display:block; }
-}
-@media only screen and (orientation:landscape){
-    #warning-message { display:none; }
-}
