@@ -25,6 +25,17 @@
         </script>
         
         <style type="text/css">
+    #warning-message { display: none; }
+    @media only screen and (orientation:portrait){
+        #wrapper { display:none; }
+        #warning-message { display:block; }
+    }
+    @media only screen and (orientation:landscape){
+        #warning-message { display:none; }
+    }
+</style>
+        
+        <style type="text/css">
             <!-- Disable the hover for brand image -->
             #brand>a, #brand:hover>a, #brand>a:focus{
                 background: inherit;
@@ -45,7 +56,8 @@
     </head>
 
     <body>
-
+        <div id="wrapper">
+            
         <div id ="header"></div>
         <!-- .......... Mini Menu ......... -->
         <div id="mmenu" style="left: 20px;">
@@ -354,7 +366,11 @@
             </form>
             
         </div>
-        
+    
+        </div>
+        <div id="warning-message">
+            this website is only viewable in landscape mode
+        </div>
         
     </body>
 </html>
