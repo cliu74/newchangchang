@@ -341,8 +341,8 @@ header{
 	float: left;
 }
 #ss-submit{
-	background-color: rgba(0,0,0, 0.05);
-	color: #ed2d8e;
+	background-color: rgba(255, 51, 153, 1);
+	color: #fff;
 	width: 90px;
 	height: 40px;
 	letter-spacing: 1px;
@@ -357,8 +357,8 @@ header{
 	transition: all 0.1s ease-in-out;
 }
 #ss-submit:hover{
-	background-color: rgba(0,0,0, 0.05);
-	color: #ed2d8e;
+	background-color: rgba(255, 153, 204, 1);
+	color: #fff;
 	width: 110px !important;
 	letter-spacing: 1px;
 }
