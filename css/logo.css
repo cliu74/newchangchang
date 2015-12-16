@@ -343,7 +343,7 @@ header{
 #ss-submit{
 	background-color: rgba(255, 51, 153, 1);
 	color: #fff;
-	width: 150px;
+	width: 200px;
 	height: 40px;
 	letter-spacing: 1px;
 	cursor: pointer;
@@ -359,7 +359,7 @@ header{
 #ss-submit:hover{
 	background-color: rgba(255, 153, 204, 1);
 	color: #fff;
-	width: 150px;
+	width: 200px;
 	letter-spacing: 1px;
 }
 #ss-submit.sending{
