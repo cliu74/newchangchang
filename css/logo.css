@@ -313,7 +313,7 @@ header{
 }
 .gform textarea{
 	font-family: 'futura_ltregular', helvetica, arial, sans-serif;
-	height: 120px;
+	height: 320px;
 	width:327px;
 	font-size: 20px;
 	color: #ed2d8e;
@@ -336,10 +336,6 @@ header{
 	margin-bottom: 10px;
 	margin-top: 9px;
     font-family: 'font-el';
-}
-.ss-form-entry{
-	float: left;
-	margin-right: 20px;
 }
 .ss-q-item-label{
 	float: left;
@@ -373,5 +369,5 @@ header{
 	/*color: transparent;*/
 }
 .ss-paragraph-text .ss-form-entry{
-	margin-right: 90px;
+	margin-right: 0px;
 }
