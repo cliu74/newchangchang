@@ -343,12 +343,11 @@ header{
 #ss-submit{
 	background-color: rgba(255, 51, 153, 1);
 	color: #fff;
-	width: 200px;
-	height: 40px;
-	letter-spacing: 1px;
+	width: 150px;
+	height: 35px;
 	cursor: pointer;
-    font-family: 'font-el';
-    text-transform: uppercase;
+    	font-family: 'font-el';
+	font-size: 16px;
 	background-image: url(/imgs/projectbg.png);
 	-webkit-transition: all 0.1s ease-in-out;
 	-moz-transition: all 0.1s ease-in-out;
@@ -358,9 +357,6 @@ header{
 }
 #ss-submit:hover{
 	background-color: rgba(255, 153, 204, 1);
-	color: #fff;
-	width: 200px;
-	letter-spacing: 1px;
 }
 #ss-submit.sending{
 	/*background-image: url("../image/sending.GIF");*/
