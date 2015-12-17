@@ -341,6 +341,7 @@ header{
 	float: left;
 }
 #ss-submit{
+    border-radius: 5px;
 	background-color: rgba(255, 51, 153, 1);
 	color: #fff;
 	width: 150px;
