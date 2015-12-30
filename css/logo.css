@@ -26,6 +26,16 @@ a:visited{
     opacity: 0.0;
 }
 
+.project-title {
+    font-size: 180%;
+    font-family: 'font-m'
+}
+
+.project-description {
+    font-size: 100%;
+    font-family: 'font-el'
+}
+
 /* .......... Font ..........*/
 
 @font-face {
