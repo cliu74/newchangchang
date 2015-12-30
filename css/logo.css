@@ -27,12 +27,12 @@ a:visited{
 }
 
 .project-title {
-    font-size: 160%;
+    font-size: 120%;
     font-family: 'font-m'
 }
 
 .project-description {
-    font-size: 100%;
+    font-size: 80%;
     font-family: 'font-el'
 }
 
