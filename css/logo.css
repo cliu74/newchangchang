@@ -324,7 +324,7 @@ header{
 .gform textarea{
 	font-family: 'futura_ltregular', helvetica, arial, sans-serif;
 	height: 320px;
-	width:327px;
+	width:80%;
 	font-size: 20px;
 	color: #ed2d8e;
 	border: none;
@@ -377,4 +377,8 @@ header{
 }
 .ss-paragraph-text .ss-form-entry{
 	margin-right: 0px;
+    background-color: #fff;
+    border-color: #ddd;
+    border-width: 0.5;
+    border-style: solid;
 }
