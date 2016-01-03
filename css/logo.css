@@ -376,9 +376,11 @@ header{
 	/*color: transparent;*/
 }
 .ss-paragraph-text .ss-form-entry{
+    border-radius: 5px;
 	margin-right: 0px;
+    margin-top:30px;
     background-color: #fff;
     border-color: #ddd;
-    border-width: 0.5;
+    border-width: 1px;
     border-style: solid;
 }
