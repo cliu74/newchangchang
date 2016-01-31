@@ -16,16 +16,6 @@
         <script src="js/components/slider.js"></script>
         <script src="js/components/slideshow.js"></script>
         <link rel="stylesheet" href="css/components/slideshow.css">
-        <script type="application/javascript">
-         
-            /* Show sending image when clicking submit */
-            $(document).ready( function() {
-                $("#ss-submit").click(function() {
-                    $(this).toggleClass( "sending" );
-                });
-            });
-            
-        </script>
         
         <style type="text/css">
             <!-- Disable the hover for brand image -->
@@ -44,13 +34,19 @@
                 border-top-color: inherit;
                 box-shadow: inherit
             }
-            #warning-message { display: none; }
+            
+            /* Responsive */
             @media only screen and (orientation:portrait){
-                #wrapper { display:none; }
-                #warning-message { display:block; }
+                .title-text
+                {
+                    font-size:200%;
+                }
             }
-            @media only screen and (orientation:landscape){
-                #warning-message { display:none; }
+             @media only screen and (orientation:landscape){
+                .title-text
+                {
+                    font-size:300%;
+                }
             }
         </style>
     </head>
@@ -81,11 +77,11 @@
             <br>
             <br>
             <br>
-            <h1 class="uk-text-large uk-text-center font-el" style="font-size:300%;color:#555">Infographics</h1>
+            <h1 class="uk-text-large uk-text-center font-el title-text" style="color:#555">Infographics</h1>
             <br>
             <br>
             <div class="uk-grid"> 
-                <div class="uk-width-1-2 uk-container-center">
+                <div class="uk-width-medium-1-2 uk-width-large-1-2 uk-width-small-8-10 uk-container-center">
                     <p class="uk-text-center uk-text-large font-el" style="font-size:120%">
                         Changchang believes that infographics is an efficient way for communication and decision making.
                         <br>
@@ -115,14 +111,14 @@
             <br>
             <br>
             <br>
-            <h1 class="uk-text-large uk-text-center font-el" style="font-size:300%;color:#555">The Study of Main Airports</h1>
+            <h1 class="uk-text-large uk-text-center font-el title-text" style="color:#555">The Study of Main Airports</h1>
             <br>
             <br>
-            <h1 class="uk-text-large uk-text-center font-el" style="font-size:300%;color:#555">Along Route 45</h1>
+            <h1 class="uk-text-large uk-text-center font-el title-text" style="color:#555">Along Route 45</h1>
             <br>
             <br>
             <div class="uk-grid"> 
-                <div class="uk-width-1-2 uk-container-center">
+                <div class="uk-width-medium-1-2 uk-width-large-1-2 uk-width-small-8-10 uk-container-center">
                     <p class="uk-text-center uk-text-large font-el" style="font-size:120%">
                         Based on the research of transportation system along Route 45, info graphics are made to visualize the numbers and findings.
                     </p>
@@ -175,13 +171,13 @@
             <br>
             <br>
             <br>
-            <h4 id="hire" class="uk-text-large uk-text-center font-el" style="font-size:300%;color:#555"><b style="color:#ed2d8e">Work with</b> Changchang</h4>
+            <h4 id="hire" class="uk-text-large uk-text-center font-el title-text" style="color:#555"><b style="color:#ed2d8e">Work with</b> Changchang</h4>
             <br>
             <br>
         </div>
-        <div class="uk-width-1-2 uk-container-center gform">
+        <div class="uk-width-medium-1-2 uk-width-large-1-2 uk-width-small-8-10 uk-container-center gform">
             <div class="uk-grid" style="display:flex">
-                <div class="uk-width-2-3" style="position:relative">
+                <div class="uk-width-small-1-1 uk-width-medium-2-3 uk-width-large-2-3" style="position:relative">
                     <p class="uk-text-medium font-el">
                         Email Changchang:<a href="mailto:changchangliu.115@gmail.com" style="color:#ed2d8e"> &nbsp;<b>changchangliu.115@gmail.com</b></a>
                     </p>
@@ -189,7 +185,7 @@
                         - OR -
                     </p>
                 </div>
-                <div class="uk-width-1-3">
+                <div class="uk-hidden-small uk-width-medium-1-3 uk-width-large-1-3">
                     <img src="image/portrait_thumbnail.png" style="height:90px;width:90px;float:right">
                 </div>
             </div>
@@ -251,12 +247,9 @@
         </div>
         </div>
         
-        <div class="uk-cover-background uk-height-viewport" style="background-image: url(image/flip_mobile.jpg);" id="warning-message">
-        </div>
-        
         <div style="background-color:#e8e7e7; margin-top:40px">
             <div class="uk-grid">
-                <div class="uk-width-1-4 uk-container-center uk-text-center uk-text-large font-m">
+                <div class="uk-width-1-2 uk-container-center uk-text-center uk-text-large font-m">
                     <br>
                     <br>
                     <p>Connect with me on</p>
@@ -264,7 +257,7 @@
             </div>
             
             <div class="uk-grid">
-                <div class="uk-width-1-4 uk-container-center" style="text-align:center;">
+                <div class="uk-width-1-2 uk-container-center" style="text-align:center;">
                     <a href="https://www.linkedin.com/profile/view?id=AAIAAA3Fx9YBx4cC_uDmmwv8Ro3mbAR38rhLtR4&trk=nav_responsive_tab_profile" target="_blank"><img height="50" width="50" src="image/linkedin_icon.png" alt="" style="margin:5px"></a>
                     <a href="https://issuu.com/changchangliu0" target="_blank"><img height="50" width="50" src="image/issuu_icon.png" alt="" style="margin:5px"></a>
                 </div>

@@ -15,16 +15,6 @@
         <script src="js/uikit.min.js"></script>
         <script src="js/components/slider.js"></script>
         <script src="js/components/lightbox.js"></script>
-        <script type="application/javascript">
-         
-            /* Show sending image when clicking submit */
-            $(document).ready( function() {
-                $("#ss-submit").click(function() {
-                    $(this).toggleClass( "sending" );
-                });
-            });
-            
-        </script>
         
         <style type="text/css">
             <!-- Disable the hover for brand image -->
@@ -43,15 +33,7 @@
                 border-top-color: inherit;
                 box-shadow: inherit
             }
-            #warning-message { display: none; }
-/*
-            @media only screen and (orientation:portrait){
-                #wrapper { display:none; }
-                #warning-message { display:block; }
-            }
-            @media only screen and (orientation:landscape){
-                #warning-message { display:none; }
-*/
+            
             /* Responsive */
             @media only screen and (orientation:portrait){
                 .title-text
@@ -59,12 +41,20 @@
                     font-size:200%;
                     color:#555;
                 }
+                .index-gif
+                {
+                    background-image: url('image/changchang_gif-lightfont_once_mobile.gif');
+                }
             }
              @media only screen and (orientation:landscape){
                 .title-text
                 {
                     font-size:300%;
                     color:#555;
+                }
+                .index-gif
+                {
+                    background-image: url('image/changchang_gif-lightfont_once.gif');
                 }
             }
         </style>
@@ -89,7 +79,7 @@
 
         <!-- .......... Home Image .......... -->
         
-        <div class="uk-clear-fix uk-cover-background uk-height-viewport" style="background-image:url(image/changchang_gif-lightfont_once.gif)">
+        <div class="uk-clear-fix uk-cover-background uk-height-viewport index-gif">
                 <!--<img src="image/changchang_gif-lightfont_once.gif" alt="" class="uk-vertical-align-center uk-align-center">-->
         </div>
         
@@ -210,7 +200,7 @@
                          <figure class="uk-overlay uk-overlay-hover">
                             <img height="350" src="image/portfolio9.jpg" alt="">
                             <figcaption class="uk-overlay-panel uk-overlay-background uk-overlay-fade uk-flex uk-flex-center uk-flex-middle uk-text-center">
-                                <div><b class="uk-text-large project-title">Chummy</b><br></div>
+                                <div><b class="uk-text-large project-title">Chummy</b><br><p class="uk-text-medium project-description">UI | UX</p></div>
                             </figcaption>
                             <a class="uk-position-cover" href="chummy.html"></a>
                         </figure>
@@ -385,14 +375,9 @@
         </div>
         </div>
         
-<!--
-        <div class="uk-cover-background uk-height-viewport" style="background-image: url(image/flip_mobile.jpg);" id="warning-message">
-        </div>
--->
-        
         <div style="background-color:#e8e7e7; margin-top:40px">
             <div class="uk-grid">
-                <div class="uk-width-small-1-2 uk-wdith-small-1-2 uk-width-large-1-2 uk-container-center uk-text-center uk-text-large font-m">
+                <div class="uk-width-small-1-2 uk-wdith-medium-1-2 uk-width-large-1-2 uk-container-center uk-text-center uk-text-large font-m">
                     <br>
                     <br>
                     <p>Connect with me on</p>
