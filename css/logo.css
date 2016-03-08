@@ -86,6 +86,14 @@ a:visited{
 	z-index: 920;
 	position: absolute;
 }
+#mmenu .logoindex{
+	background-color: white;
+/*    background-color: rgba(0,0,0, 0.0);*/
+	height: 120px;
+	width: 120px;
+	z-index: 920;
+	position: absolute;
+}
 #mmenu a{
 	border: none;
 }
@@ -136,13 +144,20 @@ header{
 .logo{
 	background-image: url(../image/changchang_logo.png);
 	background-repeat: no-repeat;
-/*	background-color: white;*/
+	background-color: white;
     background-size: contain;
     width: 60px;
     height: 80px;
     background-position: center center;
 }
-.logo:hover{
+.logoindex{
+	background-image: url(../image/changchang_logo.png);
+	background-repeat: no-repeat;
+	background-color: white;
+    background-size: contain;
+    width: 60px;
+    height: 80px;
+    background-position: center center;
 }
 .main-nav{
 	float: left;
@@ -163,7 +178,7 @@ header{
 	line-height: 40px;
 	
 	transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out; /* Firefox 4 */
+	-moz-transition: all 0.2s ease-in-out; /* Firefox 4 
 	-webkit-transition: all 0.2s ease-in-out; /* Safari and Chrome */
 	-o-transition: all 0.2s ease-in-out; /* Opera */
 }
