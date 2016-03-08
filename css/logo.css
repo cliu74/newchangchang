@@ -79,7 +79,8 @@ a:visited{
 	-o-transition: all 0.3s ease-in-out; /* Opera */
 }
 #mmenu .logo{
-	background-color: white;
+/*	background-color: white;*/
+    background-color: rgba(0,0,0, 0.0);
 	height: 120px;
 	width: 120px;
 	z-index: 920;
@@ -135,20 +136,13 @@ header{
 .logo{
 	background-image: url(../image/changchang_logo.png);
 	background-repeat: no-repeat;
-	background-color: white;
+/*	background-color: white;*/
     background-size: contain;
     width: 60px;
     height: 80px;
     background-position: center center;
 }
 .logo:hover{
-}
-.whitebox{
-	background-color: white;
-	height: 160px;
-	width: 50%;
-	position: absolute;
-	z-index: -40;
 }
 .main-nav{
 	float: left;
