@@ -1,3 +1,26 @@
+/* Responsive */
+@media only screen and (orientation:portrait){
+    .title-text
+    {
+        font-size:140%;
+    }
+    .subtitle-text
+    {
+        font-size: 105%;
+    }
+}
+ @media only screen and (orientation:landscape){
+    .title-text
+    {
+        font-size:210%;
+    }
+    .subtitle-text
+    {
+        font-size: 140%;
+    }
+}
+
+
 .uk-subnav > .uk-active > * {
     background-color: #fff;
     color: #ed2d8e;
