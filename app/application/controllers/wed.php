@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wed extends CI_Controller {
+class wed extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
