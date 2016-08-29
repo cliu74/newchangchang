@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
     public function upload()
     {
         error_log('Uploading photos');
-        $target_dir = "wed-upload/";
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/app/wed-upload/";
         $target_file = $target_dir . basename($_FILES["files"]["name"][0]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -63,7 +63,7 @@ class Welcome extends CI_Controller {
             if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
                 error_log("The file ". basename( $_FILES["files"]["name"][0]). " has been uploaded.");
             } else {
-                error_log("Sorry, there was an error uploading your file.");
+                error_log("Sorry, there was an error uploading your file to: " . $target_file);
                 error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
             }
         }
