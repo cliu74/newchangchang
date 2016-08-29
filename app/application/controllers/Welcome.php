@@ -32,7 +32,26 @@ class Welcome extends CI_Controller {
     // Given index in POST, return the number
     public function getUpload()
     {
-        
+        $index = $this->input->post("imageIndex");
+        if ($index == null) {
+            echo "Not a POST";
+            return;
+        }
+        $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/app/wed-upload/";
+        $target_file = $target_dir . $index;
+        if (file_exists($target_file)) {
+            error_log("Returning file: " . $target_file);
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: attachment; filename='.basename($target_file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($target_file));
+            error_log(readfile($target_file));
+            exit;
+        } else {
+            echo "File not exist";
+        }
     }
     
     public function upload()
@@ -46,9 +65,9 @@ class Welcome extends CI_Controller {
             return;
         }
         
-        $target_file = $target_dir . basename(strval($this->getNumberOfUploads()));
         $uploadOk = 1;
-        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        $imageFileType = pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION);
+        $target_file = $target_dir . strval($this->getNumberOfUploads()+1);
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["files"]["tmp_name"][0]);
         if($check !== false) {
@@ -80,7 +99,7 @@ class Welcome extends CI_Controller {
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
-                error_log("The file ". basename( $_FILES["files"]["name"][0]). " has been uploaded.");
+                error_log("The file ". basename($_FILES["files"]["name"][0]). " has been uploaded.");
             } else {
                 error_log("Sorry, there was an error uploading your file to: " . $target_file);
                 error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
