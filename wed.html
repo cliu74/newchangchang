@@ -22,7 +22,7 @@
                     bar         = progressbar.find('.uk-progress-bar'),
                     settings    = {
 
-                    action: '/wed-upload/', // upload url
+                    action: '/app/wed/upload', // upload url
 
                     allow : '*.(jpg|jpeg|gif|png)', // allow only images
 
@@ -44,7 +44,7 @@
                             progressbar.addClass("uk-hidden");
                         }, 250);
 
-                        alert("Upload Completed")
+                        console.log("Upload Completed");
                     }
                 };
 
