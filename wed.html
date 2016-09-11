@@ -16,6 +16,7 @@
         <script src="js/uikit.min.js"></script>
         <script src="js/components/upload.min.js"></script>
         <script>
+            var name = '';
             $(function(){
 
                 var progressbar = $("#progressbar"),
@@ -25,6 +26,8 @@
                     action: '/app/Welcome/upload', // upload url
 
                     allow : '*.(jpg|jpeg|gif|png)', // allow only images
+                        
+                    params : {'name': name},
 
                     loadstart: function() {
                         bar.css("width", "0%").text("0%");
@@ -44,16 +47,81 @@
                             progressbar.addClass("uk-hidden");
                         }, 250);
 
-                        console.log("Upload Completed");
+                        console.log("Upload Completed: " + response.responseText);
                     }
                 };
 
                 var select = UIkit.uploadSelect($("#upload-select"), settings),
                     drop   = UIkit.uploadDrop($("#upload-drop"), settings);
             });
+            
+            function submitName() {
+                var text = $('#name').val();
+                if (text === '') {
+                    alert('Name cannot be empty');
+                    return;
+                }
+            }
+            
+            function setCookie(cname, cvalue) {
+                var d = new Date();
+                d.setTime(d.getTime() + (30*24*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + "; " + expires;
+            }
+            
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length,c.length);
+                    }
+                }
+                return "";
+            }
+            
+            window.onload = function pageLoaded() {
+                checkName();
+            }
+            
+            $( window ).unload(function() {
+                // Uncomment this for debugging
+                //setCookie("name", name);
+            });
+            
+            
+            function checkName() {
+                name = getCookie("name");
+                if (name === '') {
+                    console.log('Presenting model');
+                    UIkit.modal.prompt("Please tell us who you are:", '', function(newvalue){
+                        console.log("In name prompt");
+                        if (newvalue === '') {
+                            name = "GuestSecret";
+                        } else {
+                            name = newvalue;
+                        }
+                        $('#name-label').text("Welcome, " + name);
+                        setCookie("name", name);
+                    });
+                } else {
+                    $('#name-label').text("Welcome, " + name);
+                }
+            }
         </script>
     
     </head>
+    <body>
+        <div>
+            <p id="name-label"></p>
+        </div>
+        
+        
         <div id="upload-drop" class="uk-placeholder uk-text-center">
             <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file"></a>.
         </div>
