@@ -69,7 +69,7 @@ class Welcome extends CI_Controller {
         error_log("Got upload request from " . $name);
         
         $uploadOk = 1;
-        $imageFileType = pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION);
+        $imageFileType = strtolower(pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION));
         $filename = strval($this->getNumberOfUploads()+1);
         $target_file = $target_dir . $filename;
         // Check if image file is a actual image or fake image
