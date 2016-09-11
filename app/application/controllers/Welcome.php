@@ -66,6 +66,7 @@ class Welcome extends CI_Controller {
         }
         
         $name = $this->input->post("name");
+        error_log("Got upload request from " . $name);
         
         $uploadOk = 1;
         $imageFileType = pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION);
@@ -102,7 +103,6 @@ class Welcome extends CI_Controller {
         } else {
             if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
                 error_log("The file ". basename($_FILES["files"]["name"][0]). " has been uploaded.");
-                echo $name;
             } else {
                 error_log("Sorry, there was an error uploading your file to: " . $target_file);
                 error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
