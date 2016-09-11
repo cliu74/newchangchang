@@ -65,12 +65,13 @@ class Welcome extends CI_Controller {
             return;
         }
         
-        $name = $this->input->post("name");
+        $name = $this->input->cookie("name");
         error_log("Got upload request from " . $name);
         
         $uploadOk = 1;
         $imageFileType = pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION);
-        $target_file = $target_dir . strval($this->getNumberOfUploads()+1);
+        $filename = strval($this->getNumberOfUploads()+1);
+        $target_file = $target_dir . $filename;
         // Check if image file is a actual image or fake image
         $check = getimagesize($_FILES["files"]["tmp_name"][0]);
         if($check !== false) {
@@ -103,11 +104,22 @@ class Welcome extends CI_Controller {
         } else {
             if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
                 error_log("The file ". basename($_FILES["files"]["name"][0]). " has been uploaded.");
+                echo '{"status":"success","index":"'.$filename.'"}';
+                $this->setNameIndex($name, $filename);
             } else {
                 error_log("Sorry, there was an error uploading your file to: " . $target_file);
                 error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
             }
         }
+    }
+    
+    public function nameForIndex() {
+        $index = $this->input->post("imageIndex");
+        if ($index == null) {
+            echo "Not a pull";
+            return;
+        }
+        echo $this->getNameForIndex($index);
     }
     
     private function getNumberOfUploads()
@@ -120,5 +132,35 @@ class Welcome extends CI_Controller {
         } else {
             return count($contents)-2;
         }
+    }
+    
+    private function setNameIndex($name, $index) {
+        $map = $this->loadNameIndexMap();
+        $map[strval($index)] = $name;
+        $t = json_encode($map);
+        $myfile = fopen($_SERVER['DOCUMENT_ROOT'] . "/app/name-index.txt", "w") or die("Unable to open file!");
+        fwrite($myfile, $t);
+        fclose($myfile);
+    }
+    
+    private function getNameForIndex($index) {
+        $map = $this->loadNameIndexMap();
+        if (!array_key_exists(strval($index), $map)) {
+            return "";
+        }
+        return $map[strval($index)];
+    }
+    
+    private function loadNameIndexMap() {
+        $file = $_SERVER['DOCUMENT_ROOT'] . "/app/name-index.txt";
+        error_log("file path:" . $file);
+        if (!file_exists($file)) {
+            return array();
+        }
+        $myfile = fopen($file, "r") or die("Unable to open file!");
+        $t = fread($myfile,filesize($file));
+        fclose($myfile);
+        
+        return json_decode($t, true);
     }
 }

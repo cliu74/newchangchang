@@ -26,8 +26,6 @@
                     action: '/app/Welcome/upload', // upload url
 
                     allow : '*.(jpg|jpeg|gif|png)', // allow only images
-                        
-                    params : {'name': name},
 
                     loadstart: function() {
                         bar.css("width", "0%").text("0%");
@@ -47,7 +45,15 @@
                             progressbar.addClass("uk-hidden");
                         }, 250);
 
-                        console.log("Upload Completed: " + response.responseText);
+                        console.log("Upload Completed: " + response);
+                        var o;
+                        try {
+                            o = JSON.parse(response);
+                        } catch(e) {
+                            console.log("Result is not JSON");
+                            return;
+                        }
+                        $('#upload-result').text('Uploaded image ' + o["index"]);
                     }
                 };
 
@@ -128,6 +134,10 @@
 
         <div id="progressbar" class="uk-progress uk-hidden">
             <div class="uk-progress-bar" style="width: 0%;">...</div>
+        </div>
+        
+        <div>
+            <p id="upload-result"></p>
         </div>
     </body>
 </html>
