@@ -60,57 +60,71 @@ class Welcome extends CI_Controller {
         $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/app/wed-upload/";
         
         // Stop processing if files is not in the array
-        if (!array_key_exists("files", $_FILES)) {
-            echo "Not an upload.";
-            return;
-        }
+//        if (!array_key_exists("files", $_FILES)) {
+//            echo "Not an upload.";
+//            return;
+//        }
         
         $name = $this->input->cookie("name");
         error_log("Got upload request from " . $name);
         
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION));
+//        $uploadOk = 1;
+//        $imageFileType = strtolower(pathinfo($_FILES["files"]["name"][0],PATHINFO_EXTENSION));
         $filename = strval($this->getNumberOfUploads()+1);
         $target_file = $target_dir . $filename;
+        
+        if ($this->input->post("image") == null) {
+            echo "Not a post";
+            return;
+        }
+        list(, $b64Data) = explode(",", $this->input->post("image"));
+        $data = base64_decode($b64Data);
+        
+        $ifp = fopen($target_file, "wb"); 
+        fwrite($ifp, $data); 
+        fclose($ifp); 
+
+        error_log(file_put_contents($target_file, $data));
+        echo '{"status":"success","index":"'.$filename.'"}';
         // Check if image file is a actual image or fake image
-        $check = getimagesize($_FILES["files"]["tmp_name"][0]);
-        if($check !== false) {
-            error_log('File is an image: ' . $check["mime"] . ", filePath: " . $_FILES["files"]["tmp_name"][0]);
-            $uploadOk = 1;
-        } else {
-            error_log('File is not an image' . $_FILES["files"]["tmp_name"][0]);
-            $uploadOk = 0;
-        }
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            error_log("Sorry, file already exists");
-            $uploadOk = 0;
-        }
-        // Check file size
-        if ($_FILES["files"]["size"][0] > 5000000) {
-            error_log("Sorry, your file is too large" . (string)$_FILES["files"]["size"][0]);
-            $uploadOk = 0;
-        }
-        // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" ) {
-            error_log("Sorry, only JPG, JPEG, PNG & GIF files are allowed: " . $imageFileType);
-            $uploadOk = 0;
-        }
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            error_log("Sorry, your file was not uploaded");
-        // if everything is ok, try to upload file
-        } else {
-            if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
-                error_log("The file ". basename($_FILES["files"]["name"][0]). " has been uploaded.");
-                echo '{"status":"success","index":"'.$filename.'"}';
-                $this->setNameIndex($name, $filename);
-            } else {
-                error_log("Sorry, there was an error uploading your file to: " . $target_file);
-                error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
-            }
-        }
+//        $check = getimagesize($_FILES["files"]["tmp_name"][0]);
+//        if($check !== false) {
+//            error_log('File is an image: ' . $check["mime"] . ", filePath: " . $_FILES["files"]["tmp_name"][0]);
+//            $uploadOk = 1;
+//        } else {
+//            error_log('File is not an image' . $_FILES["files"]["tmp_name"][0]);
+//            $uploadOk = 0;
+//        }
+//        // Check if file already exists
+//        if (file_exists($target_file)) {
+//            error_log("Sorry, file already exists");
+//            $uploadOk = 0;
+//        }
+//        // Check file size
+//        if ($_FILES["files"]["size"][0] > 5000000) {
+//            error_log("Sorry, your file is too large" . (string)$_FILES["files"]["size"][0]);
+//            $uploadOk = 0;
+//        }
+//        // Allow certain file formats
+//        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//        && $imageFileType != "gif" ) {
+//            error_log("Sorry, only JPG, JPEG, PNG & GIF files are allowed: " . $imageFileType);
+//            $uploadOk = 0;
+//        }
+//        // Check if $uploadOk is set to 0 by an error
+//        if ($uploadOk == 0) {
+//            error_log("Sorry, your file was not uploaded");
+//        // if everything is ok, try to upload file
+//        } else {
+//            if (move_uploaded_file($_FILES["files"]["tmp_name"][0], $target_file)) {
+//                error_log("The file ". basename($_FILES["files"]["name"][0]). " has been uploaded.");
+//                echo '{"status":"success","index":"'.$filename.'"}';
+//                $this->setNameIndex($name, $filename);
+//            } else {
+//                error_log("Sorry, there was an error uploading your file to: " . $target_file);
+//                error_log(print_r($_FILES["files"], true)); // Dump files variable for debugging
+//            }
+//        }
     }
     
     public function nameForIndex() {
