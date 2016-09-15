@@ -79,6 +79,7 @@
             }
             
             function fileSelected(event) {
+                $('#progressbar').addClass("uk-hidden");
                 $('canvas').remove();
                 var options = {maxWidth: 500, canvas: true};
                 loadImage.parseMetaData(event.target.files[0], function (data) {
