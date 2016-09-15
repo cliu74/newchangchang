@@ -79,7 +79,6 @@
             }
             
             function fileSelected(event) {
-                $('#progressbar').addClass("uk-hidden");
                 $('canvas').remove();
                 var options = {maxWidth: 500, canvas: true};
                 loadImage.parseMetaData(event.target.files[0], function (data) {
@@ -96,6 +95,10 @@
                         options
                     );
                 });
+            }
+            
+            function hideProgress() {
+                $('#progressbar').addClass("uk-hidden");
             }
             
             function uploadImage() {
@@ -151,7 +154,7 @@
         
         
         <div id="upload-drop" class="uk-placeholder uk-text-center">
-            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)"></a>.
+            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)" onclick="javascript:hideProgress()"></a>.
         </div>
 
         <div id="progressbar" class="uk-progress uk-hidden">
