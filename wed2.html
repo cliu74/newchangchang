@@ -128,6 +128,7 @@
                             return;
                         }
                         $('#upload-result').text('Uploaded image ' + o["index"]);
+                        hideProgress();
                     }
                 });
 //                $.post('/app/Welcome/upload',
@@ -155,7 +156,7 @@
         
         
         <div id="upload-drop" class="uk-placeholder uk-text-center">
-            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)" onclick="javascript:hideProgress()"></a>.
+            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)"></a>.
         </div>
 
         <div id="progressbar" class="uk-progress uk-hidden">
