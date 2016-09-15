@@ -15,6 +15,7 @@
         <script src="js/jquery.js"></script>
         <script src="js/uikit.min.js"></script>
         <script src="js/components/upload.min.js"></script>
+        <script src="js/load-image.js"></script>
         <script>
             var name = '';
             
@@ -77,47 +78,28 @@
                 }
             }
             
-            var MAX_HEIGHT = 500;
-            function render(src){
-                var image = new Image();
-                image.onload = function(){
-                    var canvas = document.getElementById("myCanvas");
-                    if(image.height > MAX_HEIGHT) {
-                        image.width *= MAX_HEIGHT / image.height;
-                        image.height = MAX_HEIGHT;
-                    }
-                    var ctx = canvas.getContext("2d");
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    canvas.width = image.width;
-                    canvas.height = image.height;
-                    ctx.drawImage(image, 0, 0, image.width, image.height);
-                    uploadImage();
-                };
-                image.src = src;
-            }
-            
-            function loadImage(src){
-                //	Prevent any non-image file type from being read.
-                if(!src.type.match(/image.*/)){
-                    console.log("The dropped file is not an image: ", src.type);
-                    return;
-                }
-
-                //	Create our FileReader and run the results through the render function.
-                var reader = new FileReader();
-                reader.onload = function(e){
-                    render(e.target.result);
-                };
-                reader.readAsDataURL(src);
-            }
-            
             function fileSelected(event) {
-                loadImage(event.target.files[0]);
+                $('canvas').remove();
+                var options = {maxWidth: 500, canvas: true};
+                loadImage.parseMetaData(event.target.files[0], function (data) {
+                    if (data.exif) {
+                        options.orientation = data.exif.get('Orientation');
+                    }
+                    loadImage(
+                        event.target.files[0],
+                        function (img) {
+                            var scaledImage = loadImage.scale(img, {maxWidth: 500});
+                            document.body.appendChild(scaledImage);
+                            uploadImage();
+                        },
+                        options
+                    );
+                });
             }
             
             function uploadImage() {
                 $.post('/app/Welcome/upload',
-                       {"image":$("#myCanvas").get(0).toDataURL("image/png")},
+                       {"image":$("canvas").get(0).toDataURL("image/png")},
                         function (data){
                             console.log("Upload Completed: " + data);
                             var o;
@@ -143,8 +125,6 @@
         <div id="upload-drop" class="uk-placeholder uk-text-center">
             <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)"></a>.
         </div>
-        
-        <canvas id="myCanvas" width="200" height="100"></canvas>
 
         <div id="progressbar" class="uk-progress uk-hidden">
             <div class="uk-progress-bar" style="width: 0%;">...</div>
