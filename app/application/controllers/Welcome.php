@@ -107,7 +107,7 @@ class Welcome extends CI_Controller {
                 $maxName = $val;
             }
         }
-        echo '{"name":'."$maxName".', "count":"'.$max.'"}';
+        echo '{"name":'."'$maxName'".', "count":"'.$max.'"}';
     }
     
     private function getNumberOfUploads()
