@@ -95,6 +95,21 @@ class Welcome extends CI_Controller {
         echo $this->getNameForIndex($index);
     }
     
+    public function getMaxUploader() {
+        $map = $this->loadNameIndexMap();
+        $c = array();
+        $max = 0;
+        $maxName = "";
+        foreach ($map as $key=>$val) {
+            $c[$val] = array_key_exists($val, $c) ? $c[$val]+1 : 1; 
+            if ($c[$val] > $max) {
+                $max = $c[$val];
+                $maxName = $val;
+            }
+        }
+        echo '{"name":'."$maxName".', "count":"'.$max.'"}';
+    }
+    
     private function getNumberOfUploads()
     {
         $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/app/wed-upload/";
