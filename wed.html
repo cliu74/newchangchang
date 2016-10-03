@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-gb" dir="ltr">
+<html lang="en-gb" dir="ltr" style="height:100%">
 
     <head>
         <meta charset="utf-8">
@@ -131,40 +131,38 @@
                         hideProgress();
                     }
                 });
-//                $.post('/app/Welcome/upload',
-//                       {"image":$("canvas").get(0).toDataURL("image/png")},
-//                        function (data){
-//                            console.log("Upload Completed: " + data);
-//                            var o;
-//                            try {
-//                                o = JSON.parse(data);
-//                            } catch(e) {
-//                                console.log("Result is not JSON");
-//                                return;
-//                            }
-//                            $('#upload-result').text('Uploaded image ' + o["index"]);
-//                        }
-//                       );
             }
         </script>
+        
+        <style type="text/css">
+            #upload-label:active {
+                background-image:url('image/upload-tap.png');
+                height:130px;
+                width:130px;
+                display:block;
+                background-size:cover;
+            }
+            #upload-label {
+                background-image:url('image/upload-normal.png');
+                height:130px;
+                width:130px;
+                display:block;
+                background-size:cover;
+            }
+        </style>
     
     </head>
-    <body>
-        <div>
-            <p id="name-label"></p>
-        </div>
+    <body style="background-image:url('image/wed-background.png');background-repeat:no-repeat;background-size:cover;height:100%">        
         
-        
-        <div id="upload-drop" class="uk-placeholder uk-text-center">
-            <i class="uk-icon-cloud-upload uk-icon-medium uk-text-muted uk-margin-small-right"></i> Attach binaries by dropping them here or <a class="uk-form-file">selecting one<input id="upload-select" type="file" onchange="javascript:fileSelected(event)"></a>.
-        </div>
-
-        <div id="progressbar" class="uk-progress uk-hidden">
-            <div class="uk-progress-bar" style="width: 0%;">...</div>
-        </div>
-        
-        <div>
-            <p id="upload-result"></p>
+        <div id="upload-drop" class="uk-text-center" style="height:100%">
+            <div style="height:30%"></div>
+            <p id="name-label" style="font-size:140%;color:#fff"></p>
+            <label for="upload-select" class="uk-container-center" id="upload-label"></label>
+            <input id="upload-select" type="file" onchange="javascript:fileSelected(event)" hidden='true' />
+            <div id="progressbar" class="uk-progress uk-hidden">
+                <div class="uk-progress-bar" style="width: 0%;">...</div>
+            </div>
+            <p id="upload-result" style="color:#999"></p>
         </div>
     </body>
 </html>
