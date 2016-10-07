@@ -68,8 +68,10 @@ class Welcome extends CI_Controller {
         $name = $this->input->cookie("name");
         error_log("Got upload request from " . $name);
         
-        $filename = strval($this->getNumberOfUploads()+1);
+        $index = $this->getNumberOfUploads()+1;
+        $filename = strval($index);
         $target_file = $target_dir . $filename;
+        $this->setNameIndex($name, $index);
         
         if ($this->input->post("image") == null) {
             echo "Not a post";
