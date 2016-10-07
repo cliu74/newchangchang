@@ -19,14 +19,6 @@
         <script>
             var name = '';
             
-            function submitName() {
-                var text = $('#name').val();
-                if (text === '') {
-                    alert('Name cannot be empty');
-                    return;
-                }
-            }
-            
             function setCookie(cname, cvalue) {
                 var d = new Date();
                 d.setTime(d.getTime() + (30*24*60*60*1000));
@@ -50,31 +42,31 @@
             }
             
             window.onload = function pageLoaded() {
-                checkName();
+                showInitialPage();
             }
             
-            $( window ).unload(function() {
-                // Uncomment this for debugging
-                //setCookie("name", name);
-            });
-            
-            
-            function checkName() {
-                name = getCookie("name");
-                if (name === '') {
-                    console.log('Presenting model');
-                    UIkit.modal.prompt("Please tell us who you are:", '', function(newvalue){
-                        console.log("In name prompt");
-                        if (newvalue === '') {
-                            name = "GuestSecret";
-                        } else {
-                            name = newvalue;
-                        }
-                        $('#name-label').text("Welcome, " + name);
-                        setCookie("name", name);
-                    });
+            function showInitialPage() {
+                name = decodeURI(getCookie("name"));
+                if (name === null || name === '') {
+                    console.log("check name fail, "+name);
+                    $("#name-input-div").show();
+                    $("#upload-div").hide();
                 } else {
-                    $('#name-label').text("Welcome, " + name);
+                    console.log("check name succeed, "+name);
+                    $("#name-label").text(name + "，使劲传照片哈！");
+                    $("#name-input-div").hide();
+                    $("#upload-div").show();
+                }
+            }
+            
+            function showPage() {
+                var newName = $("#name-input").val().trim();
+                if (newName != null && newName.length < 2) {
+                    UIkit.modal('#name-modal').show();
+                } else {
+                    console.log("Set cookie: "+newName);
+                    setCookie("name", encodeURI(newName));
+                    showInitialPage();
                 }
             }
             
@@ -127,7 +119,7 @@
                             console.log("Result is not JSON");
                             return;
                         }
-                        $('#upload-result').text('Uploaded image ' + o["index"]);
+                        $('#upload-result').text('上传第' + o["index"] +"张照片");
                         hideProgress();
                     }
                 });
@@ -156,13 +148,25 @@
         
         <div id="upload-drop" class="uk-text-center" style="height:100%">
             <div style="height:30%"></div>
-            <p id="name-label" style="font-size:140%;color:#fff"></p>
-            <label for="upload-select" class="uk-container-center" id="upload-label"></label>
-            <input id="upload-select" type="file" onchange="javascript:fileSelected(event)" hidden='true' />
-            <div id="progressbar" class="uk-progress uk-hidden">
-                <div class="uk-progress-bar" style="width:0%;color:#fff;background-image: linear-gradient(to bottom, #F8C8D3, #F8C8D3);">...</div>
+            <div id="name-input-div" class="uk-form">
+                <p>来写个名字3</p>
+                <input id="name-input" class="uk-form-row" type="text" />
+                <button class="uk-button" onclick="javascript:showPage()">走起</button>
             </div>
-            <p id="upload-result" style="color:#999"></p>
+            <div id="upload-div">
+                <p id="name-label" style="font-size:140%;color:#fff"></p>
+                <label for="upload-select" class="uk-container-center" id="upload-label"></label>
+                <input id="upload-select" type="file" onchange="javascript:fileSelected(event)" hidden='true' />
+                <div id="progressbar" class="uk-progress uk-hidden">
+                    <div class="uk-progress-bar" style="width:0%;color:#fff;background-image: linear-gradient(to bottom, #F8C8D3, #F8C8D3);">...</div>
+                </div>
+                <p id="upload-result" style="color:#999"></p>
+            </div>
+        </div>
+        
+        <div class="uk-modal" id="name-modal">
+            <div class="uk-modal-dialog">
+            <div class="uk-modal-footer">太短了嘛。再想一个哈。</div>
         </div>
     </body>
 </html>
